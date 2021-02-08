@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  constructor(private navCtrl: NavController) {}
 
-  constructor(public navCtrl: NavController) {
-
+  gotoChild() {
+    this.navCtrl.push('ChildOnePage');
   }
-
 }
