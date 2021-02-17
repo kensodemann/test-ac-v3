@@ -1,10 +1,11 @@
 import { IonicAuth } from '@ionic-enterprise/auth';
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular/platform/platform';
+import { VaultProvider } from '../vault/vault';
 
 @Injectable()
 export class AuthProvider extends IonicAuth {
-  constructor(platform: Platform) {
+  constructor(platform: Platform, vault: VaultProvider) {
     super({
       authConfig: 'azure',
       clientID: 'ed8cb65d-7bb2-4107-bc36-557fb680b994',
@@ -21,7 +22,8 @@ export class AuthProvider extends IonicAuth {
         : 'http://localhost:8100',
       logoutUrl: platform.is('cordova')
         ? 'msauth://com.ionic.acprovider/k3krTUlwC1YA3aJc0FC7wQ11QBU%3D'
-        : 'http://localhost:8100'
+        : 'http://localhost:8100',
+      tokenStorageProvider: vault
     });
   }
 }
